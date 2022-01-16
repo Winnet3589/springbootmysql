@@ -10,4 +10,6 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
 
 
   List<AccountEntity> findByFirstNameStartsWith(String firstName);
+
+  List<AccountEntity> findByFirstNameStartsWithAndLastNameStartsWith(String firstName, String lastName);
 }

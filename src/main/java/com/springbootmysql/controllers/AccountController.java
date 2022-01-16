@@ -24,7 +24,12 @@ public class AccountController {
   }
 
   @GetMapping(value = "/getUserName")
-  public List<AccountEntity> getUserName(@RequestParam String firstName) {
-    return accountService.getUserName(firstName);
+  public List<AccountEntity> getUserName(@RequestParam String firstName, @RequestParam Integer page, @RequestParam Integer size) {
+    return accountService.getUserName(firstName, page, size);
+  }
+
+  @GetMapping(value = "/getUserNameWithFirstAndLast")
+  public List<AccountEntity> getUserName(@RequestParam String firstName, @RequestParam String lastName) {
+    return accountService.getUserName(firstName, lastName);
   }
 }

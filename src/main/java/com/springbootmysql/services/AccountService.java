@@ -3,6 +3,7 @@ package com.springbootmysql.services;
 import com.springbootmysql.entity.AccountEntity;
 import com.springbootmysql.repositories.AccountRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,12 @@ public class AccountService {
     return account;
   }
 
-  public List<AccountEntity> getUserName(String firstName) {
-    return accountRepository.findByFirstNameStartsWith(firstName);
+  public List<AccountEntity> getUserName(String firstName, Integer page, Integer size) {
+    List<AccountEntity> total = accountRepository.findByFirstNameStartsWith(firstName);
+    return total;
+  }
+
+  public List<AccountEntity> getUserName(String firstName, String lastName) {
+    return accountRepository.findByFirstNameStartsWithAndLastNameStartsWith(firstName, lastName);
   }
 }
